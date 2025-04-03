@@ -8,9 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('VendorPage.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -19,5 +17,41 @@ Route::middleware('auth')->group(function () {
 
    
 });
+
+Route::get('/seller', function () {
+    return view('VendorPage.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/seller/notification', function () {
+    return view('VendorPage.notification');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/seller/History', function () {
+    return view('VendorPage.History');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/seller/about', function () {
+    return view('VendorPage.about');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+Route::get('/distributor', function () {
+    return view('distributorPage.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/distributor/notification', function () {
+    return view('distributorPage.notification');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/distributor/History', function () {
+    return view('distributorPage.History');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/distributor/about', function () {
+    return view('distributorPage.about');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
