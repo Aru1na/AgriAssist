@@ -89,7 +89,6 @@
             <x-bladewind::input 
                 name="email" 
                 label="Email" 
-                type="email" 
                 required="true"
                 class="rounded border-2 border-gray-300 focus:ring-2 focus:ring-blue-500"
                 onfocus="changeCss('.events', '!border-2,!border-red-400', '!text-black')"
@@ -100,6 +99,20 @@
             @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
 
+        <!-- Mobile Number -->
+        <div class="mt-4">
+            <x-bladewind::input 
+                name="mobile" 
+                label="Mobile Number" 
+                required="true"
+                class="rounded border-2 border-gray-300 focus:ring-2 focus:ring-blue-500"
+                onfocus="changeCss('.events', '!border-2,!border-red-400', '!text-black')"
+                onblur="changeCss('.events', '!border-2,!border-red-400', 'remove')"
+                value="{{ old('mobile') }}" 
+                error="{{ $errors->first('mobile') }}" 
+            />
+            @error('mobile') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        </div>
 
         <!-- Password -->
         <div class="mt-4">
@@ -155,31 +168,29 @@
         </div>
 
         <!-- DROPBOX FOR UPLOADING FILE REQUIREMENTS -->
-         <!--
         <div class="mb-3">
             <label class="dropFileLabel">Upload BIR Permit</label>
             <x-bladewind::filepicker
-                name="BIRpermit"
+                name="BIR"
                 required="true"
                 placeholder="Upload BIR permit"
-                accepted_file_types="image/*, .pdf, .png, .jpg"
+                accepted_file_types="image/*, .png, .jpg"
                 max_file_size="50"
                 />
-            @error('BIRpermit') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            @error('BIR') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-3">
             <label class="dropFileLabel">Upload Mayor's Permit</label>
             <x-bladewind::filepicker
-                name="Mayorpermit"
+                name="MAYOR"
                 required="true"
                 placeholder="Upload Mayor's permit"
-                accepted_file_types="image/*, .pdf, .png, .jpg"
+                accepted_file_types="image/*, .png, .jpg"
                 max_file_size="50"
                 />
-            @error('Mayorpermit') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            @error('MAYOR') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
-        -->
 
         <!-- ALREADY REGISTERED? button -->
         <div class="flex items-center justify-end mt-4">
