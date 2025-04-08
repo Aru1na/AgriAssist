@@ -20,7 +20,12 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/seller', function () {
     return view('VendorPage.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('seller');
+
+Route::post('/seller', function () {
+    return view('VendorPage.dashboard');
+})->middleware(['auth', 'verified']);
+
 
 Route::get('/seller/notification', function () {
     return view('VendorPage.notification');

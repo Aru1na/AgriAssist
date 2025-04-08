@@ -1,112 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>W3.CSS Template</title>
+<title>Responsive Sidebar with Icons</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-.w3-sidebar .w3-bar-item {
+/* Sidebar styles */
+.sidebar {
+    width: 120px;
+    background: #008000;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
     transition: all 0.3s ease-in-out;
 }
-.w3-sidebar .w3-bar-item:hover { border-radius: 5px; }
-body, h1, h2, h3, h4, h5, h6 { font-family: "Montserrat", sans-serif; }
-.w3-row-padding img { margin-bottom: 12px; }
-.w3-sidebar { width: 120px; background: #008000; }
-#main { margin-left: 120px; }
-@media only screen and (max-width: 600px) { #main { margin-left: 0; } }
-
-/* Image Carousel */
-.carousel-container {
-    background-color: white;
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    position: relative;
-}
-.carousel-images img {
-    width: 100%;
-    display: none;
-}
-.carousel-images img.active { display: block; }
-.carousel-dots {
+.sidebar a {
     text-align: center;
-    margin-top: 10px;
+    padding: 16px;
+    width: 100%;
+    color: white;
+    transition: all 0.3s ease-in-out;
 }
-.carousel-dots .dot {
-    height: 10px;
-    width: 10px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 5px;
-    cursor: pointer;
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
 }
-.carousel-dots .dot.active { background-color: #008000; }
+.sidebar i {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    background: #008000;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+}
+.mobile-menu a {
+    padding: 16px;
+    color: white;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+.mobile-menu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+    .mobile-menu { display: flex; }
+}
 </style>
 </head>
-<body class="w3-grey">
+<body class="bg-gray-200">
 
-<!-- Sidebar -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-  <img src="/w3images/avatar_smoke.jpg" style="width:100%">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-shopping-cart w3-xxlarge"></i>
-    <p>RESUPPLY</p>
-  </a>
-  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-wpforms w3-xxlarge"></i>
-    <p>ORDERS</p>
-  </a>
-  <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-history w3-xxlarge"></i>
-    <p>ABOUT</p>
-  </a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-bell w3-xxlarge"></i>
-    <p>NOTIFICATION</p>
-  </a>
+<!-- Sidebar (History-Style) -->
+<nav class="sidebar hidden md:flex">
+  <img src="https://via.placeholder.com/100" class="rounded-full mb-4">
+  <a href="#"><i class="fa fa-shopping-cart"></i><p>RESUPPLY</p></a>
+  <a href="#"><i class="fa fa-wpforms"></i><p>ORDERS</p></a>
+  <a href="#"><i class="fa fa-history"></i><p>ABOUT</p></a>
+  <a href="#"><i class="fa fa-bell"></i><p>NOTIFICATIONS</p></a>
 </nav>
 
-<div class="w3-padding-large" id="main">
-  <header class="w3-container w3-padding-16 w3-center w3-amber w3-border w3-border-black" id="home" style="width:900px; height: 900px; margin: auto; border-radius: 10px">
-    <div class="carousel-container">
-      <div class="carousel-images">
-        <img src="Image+1" class="active">
-        <img src="Image+2">
-        <img src="Image+3">
-      </div>
-      <div class="carousel-dots">
-        <span class="dot active" onclick="showImage(0)"></span>
-        <span class="dot" onclick="showImage(1)"></span>
-        <span class="dot" onclick="showImage(2)"></span>
-      </div>
-    </div>
-  </header>
+<!-- Mobile Sidebar Button -->
+<button id="menuBtn" class="fixed top-4 left-4 md:hidden bg-green-700 text-white px-4 py-2 rounded-lg">
+  ☰ Menu
+</button>
+
+<!-- Mobile Sidebar -->
+<div id="mobileMenu" class="mobile-menu hidden">
+  <button id="closeMenu" class="absolute top-4 right-4 text-white text-lg font-bold">✖</button>
+  <a href="#"><i class="fa fa-shopping-cart"></i> RESUPPLY</a>
+  <a href="#"><i class="fa fa-wpforms"></i> ORDERS</a>
+  <a href="#"><i class="fa fa-history"></i> ABOUT</a>
+  <a href="#"><i class="fa fa-bell"></i> NOTIFICATIONS</a>
+</div>
+
+<!-- Main Content -->
+<div class="flex-1 md:ml-[120px] flex justify-center items-center min-h-screen">
+  <div class="w-full md:w-[600px] bg-white shadow-lg rounded-lg p-6">
+    <h2 class="text-center text-xl font-bold mb-4">Content Area</h2>
+    <p class="text-gray-600 text-center">This is the main content section.</p>
+  </div>
 </div>
 
 <script>
-let currentIndex = 0;
-const images = document.querySelectorAll(".carousel-images img");
-const dots = document.querySelectorAll(".carousel-dots .dot");
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const closeMenu = document.getElementById("closeMenu");
 
-function showImage(index) {
-    images[currentIndex].classList.remove("active");
-    dots[currentIndex].classList.remove("active");
-    currentIndex = index;
-    images[currentIndex].classList.add("active");
-    dots[currentIndex].classList.add("active");
-}
-
-setInterval(() => {
-    const nextIndex = (currentIndex + 1) % images.length;
-    showImage(nextIndex);
-}, 3000); // Auto slide every 3 seconds
+    menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+    closeMenu.addEventListener("click", () => mobileMenu.classList.add("hidden"));
+});
 </script>
 
 </body>
