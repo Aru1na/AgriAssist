@@ -37,4 +37,5 @@ Route::middleware('auth')->group(function () {
         ->name('distAbout');
 });
 
+
 require __DIR__.'/auth.php';
