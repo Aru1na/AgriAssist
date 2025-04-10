@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\distController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\vendorHomeController;
+use App\Http\Controllers\vendorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,48 +16,26 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/Seller', [vendorHomeController::class, 'index']);
+    // SELLER ROUTING
+    Route::get('/seller', [vendorController::class, 'resupplyRequestView'])
+        ->name('sellerResupply');
+    Route::get('/seller/notification', [vendorController::class, 'notificationView'])
+        ->name('sellerNotif');
+    Route::get('/seller/history', [vendorController::class, 'historyView'])
+        ->name('sellerHistory');
+    Route::get('/seller/about', [vendorController::class, 'aboutView'])
+        ->name('sellerAbout');
+
+    //DISTRIBUTOR ROUTING
+    Route::get('/distributor', [distController::class, 'postRequestView'])
+        ->name('distSupply');
+    Route::get('/distributor/notification', [distController::class, 'notificationView'])
+        ->name('distNotif');
+    Route::get('/distributor/history', [distController::class, 'historyView'])
+        ->name('distHistory');
+    Route::get('/distributor/about', [distController::class, 'aboutView'])
+        ->name('distAbout');
 });
 
-Route::get('/seller', function () {
-    return view('VendorPage.dashboard');
-})->middleware(['auth', 'verified'])->name('seller');
-
-Route::post('/seller', function () {
-    return view('VendorPage.dashboard');
-})->middleware(['auth', 'verified']);
-
-
-Route::get('/seller/notification', function () {
-    return view('VendorPage.notification');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-Route::get('/seller/History', function () {
-    return view('VendorPage.History');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/seller/about', function () {
-    return view('VendorPage.about');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-
-Route::get('/distributor', function () {
-    return view('distributorPage.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/distributor/notification', function () {
-    return view('distributorPage.notification');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-Route::get('/distributor/History', function () {
-    return view('distributorPage.History');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/distributor/about', function () {
-    return view('distributorPage.about');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

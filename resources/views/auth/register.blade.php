@@ -167,29 +167,17 @@
             @error('role') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
-        <!-- DROPBOX FOR UPLOADING FILE REQUIREMENTS -->
+        <!-- DROPBOX FOR UPLOADING VALID ID PICTURE -->
         <div class="mb-3">
             <label class="dropFileLabel">Upload BIR Permit</label>
             <x-bladewind::filepicker
-                name="BIR"
+                name="validID"
                 required="true"
-                placeholder="Upload BIR permit"
+                placeholder="Upload a valid ID"
                 accepted_file_types="image/*, .png, .jpg"
                 max_file_size="50"
                 />
-            @error('BIR') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
-
-        <div class="mb-3">
-            <label class="dropFileLabel">Upload Mayor's Permit</label>
-            <x-bladewind::filepicker
-                name="MAYOR"
-                required="true"
-                placeholder="Upload Mayor's permit"
-                accepted_file_types="image/*, .png, .jpg"
-                max_file_size="50"
-                />
-            @error('MAYOR') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            @error('validID') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
 
         <!-- ALREADY REGISTERED? button -->

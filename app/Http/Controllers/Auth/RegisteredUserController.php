@@ -38,11 +38,15 @@ class RegisteredUserController extends Controller
             'mobile' => ['required', 'string', 'min:11', 'max:11'],
             'password' => ['required', 'min:8', 'confirmed', Rules\Password::defaults()],
             'role' => ['required', 'in:vendor,distributor'],
-            'BIR' => 'required',
-            'MAYOR' => 'required',
+            'validID' => 'required',
         ]);
 
+        do {
+            $randomId = random_int(1000000, 9999999);
+        } while (User::where('userID', $randomId)->exists());
+
         $user = User::create([
+            'userID' => $randomId,
             'firstName' => $request->input('firstName'),
             'middleName' => $request->input('middleName'),
             'lastName' => $request->input('lastName'),
@@ -51,14 +55,20 @@ class RegisteredUserController extends Controller
             'mobile' => $request->input('mobile'),
             'password' => Hash::make($request->input('password')),
             'role' => $request->input('role'),
-            'BIR' => $request->input('BIR'),
-            'MAYOR' => $request->input('MAYOR'),
+            'validID' => $request->input('validID'),
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false)) -> with('success', 'Registration Successful');
+        if ($user->role == 'vendor')
+        {
+            return redirect(route('sellerResupply', absolute: false)) -> with('success', 'Registration Successful');
+        }
+        else
+        {
+            return redirect(route('distSupply', absolute: false)) -> with('success', 'Registration Successful');
+        }
     }
 }
