@@ -81,7 +81,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </a>
   <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-history w3-xxlarge"></i>
-    <p>ABOUT</p>
+    <p>HISTORY</p>
   </a>
   <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-bell w3-xxlarge"></i>

@@ -1,111 +1,174 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ sidebarOpen: true }">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Collapsible Sidebar with Topbar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.w3-sidebar .w3-bar-item {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect: Add border-radius */
+.w3-sidebar .w3-bar-item:hover {
+    border-radius: 5px;
+}
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #008000;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
 </head>
-<body class="bg-stone-100 text-gray-800" x-data="{ sidebarOpen: true }">
+<body class="w3-grey">
 
-<!-- Topbar -->
-<div class="fixed top-0 left-0 right-0 h-14 bg-white shadow z-50 flex items-center px-4">
-  <button @click="sidebarOpen = !sidebarOpen" class="text-gray-700 text-2xl focus:outline-none">
-    <i class="fa fa-bars"></i>
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+  <img src="/w3images/avatar_smoke.jpg" style="width:100%">
+  
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-shopping-cart w3-xxlarge"></i>
+    <p>RESUPPLY</p>
+  </a>
+  
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-wpforms w3-xxlarge"></i>
+    <p>ORDERS</p>
+  </a>
+  
+  <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-history w3-xxlarge"></i>
+    <p>ABOUT</p>
+  </a>
+  
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+    <i class="fa fa-bell w3-xxlarge"></i>
+    <p>NOTIFICATION</p>
+  </a>
+</nav>
+
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+    <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
+    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-16 w3-center w3-amber w3-boarder w3-boarder-black" id="home" style="width:900px; height: 900px; margin: auto; border-radius: 10px">
+  <div style="display: flex; justify-content: center; gap: 30px; margin-top: 5px; align-items:center">
+   <!-- Container for structured rectangles -->
+   <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 60px; justify-items: auto; margin-top: 30px; margin-left: 25px;">
+    
+    <!-- First Rectangle (Column 1) -->
+    <div style="position: relative; display: inline-block; width: 300px;">
+  <label for="productInput" class="w3-text-black" style="margin-bottom: 5px; text-align: left; font-weight: bold; display: block;">
+    Select a product
+  </label>
+  
+  <input list="productList" id="productInput" class="w3-input w3-border" placeholder="Type or select a product..." 
+         style="padding: 10px; width: 100%; height: 40px; border-radius: 5px; padding-right: 30px;">
+  
+  <datalist id="productList">
+    <option value="Product 1"></option>
+    <option value="Product 2"></option>
+    <option value="Product 3"></option>
+  </datalist>
+
+  <!-- Dropdown Icon -->
+  <div style="position: absolute; right: 35px; top: 76%; transform: translateY(-45%); pointer-events: none;">
+    ▼
+  </div>
+</div>
+
+    <!-- Second Rectangle with Label -->
+    <div style="grid-column: 3; display: flex; flex-direction: column; align-items: flex-start;">
+
+      <label for="field2" class="w3-text-black" style="margin-bottom: 5px; text-align: left; font-weight: bold;">Price</label>
+      <input type="text" id="field2" class="w3-input w3-border" placeholder="Enter text here..." 
+             style="padding: 10px; width: 300px; height: 40px; border-radius: 5px;">
+    </div>
+    
+    <!-- Third Rectangle with Label (Below First One, 3 Spaces Apart) -->
+    <div style="grid-column: 1; grid-row: 2;display: flex; flex-direction: column; align-items: flex-start;">
+      <label for="field3" class="w3-text-black" style="margin-bottom: 5px; text-align: left; font-weight: bold;">Amount</label>
+      <input type="text" id="field3" class="w3-input w3-border" placeholder="Enter text here..." 
+             style="padding: 10px; width: 100px; height: 40px; border-radius: 5px;">
+    </div>   
+
+        <!-- Third Rectangle with Label (Below First One, 3 Spaces Apart) -->
+        <div style="grid-column: 1; grid-row: 3;display: flex; flex-direction: column; align-items: flex-start;">
+      <label for="field3" class="w3-text-black" style="margin-bottom: 5px; text-align: left; font-weight: bold;">Order Confirmation:</label>
+      <input type="text" id="field3" class="w3-input w3-border" placeholder="Enter text here..." 
+             style="padding: 10px; width: 400px; height: 100px; border-radius: 5px;">
+    </div>   
+    
+    <!-- Fourth Rectangle with Label (Below First One, 3 Spaces Apart) -->
+    <div style="grid-column: 3; grid-row: 3;display: flex; flex-direction: column; align-items: flex-start;">
+      <label for="field3" class="w3-text-black" style="margin-bottom: 5px; text-align: left; font-weight: bold;">Estimated Total:</label>
+      <input type="text" id="field3" class="w3-input w3-border" placeholder="Enter text here..." 
+             style="padding: 10px; width: 200px; height: 40px; border-radius: 5px;">
+    </div>
+    
+    <!-- Note to Distributor (Positioned Between Estimated Total & Additional Notes) -->
+<div style="position: absolute; left: 50%; transform: translateX(-50%); top: 500px; 
+            display: flex; flex-direction: column; align-items: flex-start; margin: 30px; ">
+  <label for="noteDistributor" class="w3-text-black" 
+         style="margin-bottom: 5px; text-align: left; font-weight: bold;">Note to Distributor:</label>
+  <input type="text" id="noteDistributor" class="w3-input w3-border" placeholder="Enter text here..." 
+         style="padding: 10px; width: 800px; height: 200px; border-radius: 5px;">
+</div>
+
+
+    <!-- Sixth Rectangle (Now a Clickable Button) -->
+<div style="grid-column: 3; grid-row: 9; display: flex; flex-direction: column; align-items: flex-start;">
+
+  <button id="additionalNotesBtn" class="w3-button w3-border w3-hover-light-grey" 
+          style="padding: 10px; width: 300px; height: 40px; border-radius: 5px; background-color: #ffcc00; font-weight: bold;">
+    Place Order
   </button>
-  <h1 class="ml-4 text-lg font-semibold">Dashboard</h1>
 </div>
 
-<!-- Sidebar -->
-<div :class="sidebarOpen ? 'w-64' : 'w-20'" class="fixed top-14 left-0 h-full bg-white border-r shadow transition-all duration-300 z-40 flex flex-col">
-  <!-- User Info (Positioned at the top inside the sidebar) -->
-  <div class="flex items-center space-x-3 p-4 border-b">
-    <div class="bg-gray-300 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">BD</div>
-    <div x-show="sidebarOpen">
-      <div class="font-medium text-sm">Bryan de Alday</div>
-      <div class="text-xs text-gray-500">bryan@localhost</div>
-    </div>
-    <!-- Settings Icon -->
-    <i class="fa fa-cog text-gray-500 ml-auto hover:text-gray-700 cursor-pointer" x-show="sidebarOpen"></i>
   </div>
 
-  <!-- Sidebar Content (Navigation) -->
-  <div class="p-4 flex-grow overflow-y-auto">
-    <nav class="space-y-2">
-      <a href="#" class="flex items-center text-gray-700 hover:bg-gray-100 px-3 py-2 rounded">
-        <i class="fa fa-truck text-xl" :class="sidebarOpen ? 'mr-3' : 'mx-auto'"></i>
-        <span x-show="sidebarOpen">Resupply</span>
-      </a>
-      <a href="#" class="flex items-center text-gray-700 hover:bg-gray-100 px-3 py-2 rounded">
-        <i class="fa fa-file-text text-xl" :class="sidebarOpen ? 'mr-3' : 'mx-auto'"></i>
-        <span x-show="sidebarOpen">Orders</span>
-      </a>
-      <a href="#" class="flex items-center text-gray-700 hover:bg-gray-100 px-3 py-2 rounded">
-        <i class="fa fa-history text-xl" :class="sidebarOpen ? 'mr-3' : 'mx-auto'"></i>
-        <span x-show="sidebarOpen">History</span>
-      </a>
-      <a href="#" class="flex items-center text-gray-700 hover:bg-gray-100 px-3 py-2 rounded">
-        <i class="fa fa-info-circle text-xl" :class="sidebarOpen ? 'mr-3' : 'mx-auto'"></i>
-        <span x-show="sidebarOpen">About</span>
-      </a>
-      <a href="#" class="flex items-center text-gray-700 hover:bg-gray-100 px-3 py-2 rounded">
-        <i class="fa fa-bell text-xl" :class="sidebarOpen ? 'mr-3' : 'mx-auto'"></i>
-        <span x-show="sidebarOpen">Notification</span>
-      </a>
-    </nav>
-  </div>
-</div>
+  
 
-<!-- Main Content -->
-<div :class="sidebarOpen ? 'md:ml-64 ml-20' : 'ml-20'" class="pt-20 transition-all duration-300 p-6">
-  <header class="bg-white border border-gray-300 rounded-lg max-w-3xl mx-auto p-6 shadow">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <div>
-        <label for="productInput" class="block font-bold mb-2">Select a product</label>
-        <input list="productList" id="productInput" placeholder="Type or select a product..." class="w-full h-10 px-3 border rounded">
-        <datalist id="productList">
-          <option value="Coconut"></option>
-          <option value="Rice"></option>
-          <option value="Corn"></option>
-        </datalist>
-      </div>
-      <div>
-        <label for="price" class="block font-bold mb-2">Price (per kilogram)</label>
-        <input type="text" id="price" placeholder="₱15" class="w-full h-10 px-3 border rounded">
-      </div>
-    </div>
-    <div class="mt-6">
-      <label for="amount" class="block font-bold mb-2">Amount (in kilogram)</label>
-      <input type="text" id="amount" placeholder="1000" class="w-full h-10 px-3 border rounded">
-    </div>
 
-    <!-- Order Confirmation & Estimated Total Side-by-Side -->
-    <div class="mt-6 flex gap-6">
-      <!-- Order Confirmation Box -->
-      <div class="p-4 bg-gray-100 rounded-lg w-1/2">
-        <h2 class="font-bold text-lg mb-2">Order Confirmation:</h2>
-        <p> <br></p>
-      </div>
-
-      <!-- Estimated Total Box -->
-      <div class="p-4 bg-gray-100 rounded-lg w-1/2">
-        <h2 class="font-bold mb-2">EstimaTed Total:</h2>
-        <div class="font-semibold text-lg"></div>
-      </div>
-    </div>
-
-    <!-- Note to Distributor (Full Width) -->
-    <div class="mt-6">
-      <label for="noteDistributor" class="block font-bold mb-2">Note to Distributor:</label>
-      <textarea id="noteDistributor" class="w-full h-32 px-3 border rounded resize-none" placeholder="Enter note here..."></textarea>
-    </div>
-
-    <div class="mt-6 text-right">
-      <button class="px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded">Confirm Order</button>
-    </div>
+          
+          
+          
+          
+             
   </header>
+
+  
+  
+    <!-- Footer -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <!-- End footer -->
+  </footer>
+
+<!-- END PAGE CONTENT -->
 </div>
 
 </body>

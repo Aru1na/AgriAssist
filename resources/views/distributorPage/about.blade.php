@@ -65,7 +65,7 @@ body, h1, h2, h3, h4, h5, h6 { font-family: "Montserrat", sans-serif; }
   </a>
   <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-history w3-xxlarge"></i>
-    <p>ABOUT</p>
+    <p>HISTORY</p>
   </a>
   <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-bell w3-xxlarge"></i>
@@ -77,9 +77,9 @@ body, h1, h2, h3, h4, h5, h6 { font-family: "Montserrat", sans-serif; }
   <header class="w3-container w3-padding-16 w3-center w3-amber w3-border w3-border-black" id="home" style="width:900px; height: 900px; margin: auto; border-radius: 10px">
     <div class="carousel-container">
       <div class="carousel-images">
-        <img src="Image+1" class="active">
-        <img src="Image+2">
-        <img src="Image+3">
+        <img src="https://via.placeholder.com/600x300/008000/ffffff?text=Image+1" class="active">
+        <img src="https://via.placeholder.com/600x300/004d00/ffffff?text=Image+2">
+        <img src="https://via.placeholder.com/600x300/002200/ffffff?text=Image+3">
       </div>
       <div class="carousel-dots">
         <span class="dot active" onclick="showImage(0)"></span>
